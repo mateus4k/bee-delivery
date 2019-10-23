@@ -1,6 +1,24 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Routes from './src/routes'
-console.reportErrorsAsExceptions = false
-export default function App() {
-  return <Routes />
+
+// class App extends Component {
+//   render() {
+//     return <Routes />
+//   }
+// }
+
+// const OverlayApp = console.tron.overlay(App)
+
+// export default OverlayApp
+
+import './src/config/reactotron'
+
+class App extends Component {
+  render() {
+    return <Routes />
+  }
 }
+
+const OverlayApp = console.tron.overlay(App)
+
+export default OverlayApp
