@@ -9,6 +9,6 @@ class App extends Component {
   }
 }
 
-const OverlayApp = console.tron.overlay(App);
+const OverlayApp = console.tron.overlay(App)
 
-export default OverlayApp;
+export default OverlayApp

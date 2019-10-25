@@ -9,7 +9,6 @@ import {
   TouchableOpacity,
   View,
   Linking,
-  Alert,
   StyleSheet
 } from 'react-native'
 import { TextInputMask } from 'react-native-masked-text'
@@ -111,26 +110,7 @@ export default class Login extends Component {
               >
                 <Text style={styles.externalLinksText}>Dúvidas?</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() =>
-                  Alert.alert('Você deseja ser', 'BikerBee ou MotoBee?', [
-                    {
-                      text: 'BIKERBEE',
-                      onPress: () =>
-                        Linking.openURL(
-                          'https://beedelivery.com.br/entregadores'
-                        )
-                    },
-                    {
-                      text: 'MOTOBEE',
-                      onPress: () =>
-                        Linking.openURL(
-                          'https://beedelivery.com.br/entregadores'
-                        )
-                    }
-                  ])
-                }
-              >
+              <TouchableOpacity onPress={() => navigation.navigate('Register')}>
                 <Text style={styles.externalLinksText}>Cadastro</Text>
               </TouchableOpacity>
             </View>

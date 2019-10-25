@@ -16,7 +16,7 @@ import { validateCPF } from 'react-native-masked-text/dist/lib/masks/cpf.mask'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Logo from '../assets/logo.png'
 
-export default class ForgotPassword extends Component {
+export default class Register extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -35,8 +35,26 @@ export default class ForgotPassword extends Component {
         </View>
 
         {/* Form */}
+        {/*
+         * Estado
+         * Cidade
+         * CPF
+         * Nome
+         * Email
+         * Senha
+         * Confirmar Senha
+         ** Ao continuar, eu confirmo que li a Política de Privacidade da Bee e concordo com os (Termos de Uso)[https://beedelivery.com.br/termos-uso-entregador]
+         ** Já tem conta? Entrar
+         */}
         <View style={styles.form}>
-          <Text style={styles.title}>Recuperação de Senha</Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>
+              Pronto para ganhar
+              <Text style={styles.textBold}> dinheiro </Text>?
+            </Text>
+            <Text style={styles.subtitle}>É só se cadastrar.</Text>
+          </View>
+
           <View style={styles.inputContainer}>
             <TextInputMask
               style={styles.inputText}
@@ -69,7 +87,6 @@ export default class ForgotPassword extends Component {
               style={styles.icons}
             />
           </View>
-
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.inputText}
@@ -85,14 +102,12 @@ export default class ForgotPassword extends Component {
               style={styles.icons}
             />
           </View>
-
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate('Login')}
           >
             <Text style={styles.buttonText}>Redefinir</Text>
           </TouchableOpacity>
-
           <View style={styles.registerContainer}>
             <Text style={styles.registerText}>Ainda não possui conta?</Text>
             <TouchableOpacity
@@ -145,12 +160,25 @@ const styles = StyleSheet.create({
     elevation: 3
   },
 
+  titleContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    marginBottom: 20
+  },
+
   title: {
-    textTransform: 'uppercase',
-    fontWeight: 'bold',
-    fontSize: 20,
-    marginBottom: 20,
-    textAlign: 'center'
+    fontWeight: '400',
+    fontSize: 20
+  },
+
+  textBold: {
+    fontWeight: '600'
+  },
+
+  subtitle: {
+    fontWeight: '400',
+    fontSize: 18
   },
 
   inputText: {
