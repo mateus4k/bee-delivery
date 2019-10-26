@@ -95,7 +95,12 @@ export default class Login extends Component {
               <Text style={styles.forgotPasswordText}>Esqueceu a senha?</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                navigation.navigate('Home')
+              }}
+            >
               <Text style={styles.buttonText}>Entrar</Text>
             </TouchableOpacity>
 
