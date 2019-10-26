@@ -95,10 +95,7 @@ export default class ForgotPassword extends Component {
 
           <View style={styles.registerContainer}>
             <Text style={styles.registerText}>Ainda não possui conta?</Text>
-            <TouchableOpacity
-              style={styles.registerButton}
-              onPress={() => navigation.navigate('Register')}
-            >
+            <TouchableOpacity onPress={() => navigation.navigate('Register')}>
               <Text style={styles.registerButtonText}>Cadastre-se</Text>
             </TouchableOpacity>
           </View>
