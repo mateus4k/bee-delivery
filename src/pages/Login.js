@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
   Linking,
+  StatusBar,
   StyleSheet
 } from 'react-native'
 import { TextInputMask } from 'react-native-masked-text'
@@ -37,6 +38,8 @@ export default class Login extends Component {
     const { subscription, subscription_type } = this.state
     return (
       <ImageBackground source={LoginBackground} style={styles.backgroundImage}>
+        <StatusBar barStyle="light-content" translucent />
+
         <View style={styles.backgroundOverlay} />
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
           <Image source={Logo} style={styles.logo} resizeMode={'center'} />
