@@ -28,10 +28,8 @@ export default class Login extends Component {
     }
   }
 
-  static navigationOptions = () => {
-    return {
-      header: () => null
-    }
+  static navigationOptions = {
+    header: () => null
   }
 
   render() {

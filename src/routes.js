@@ -1,3 +1,7 @@
+import React from 'react'
+import { Platform } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons'
+
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { createStackNavigator } from 'react-navigation-stack'
@@ -17,12 +21,76 @@ const GuestAreaNavigator = createStackNavigator({
   ForgotPassword
 })
 
-const RestrictAreaNavigator = createBottomTabNavigator({
-  Home,
-  Notification,
-  Review,
-  Profile
-})
+const RestrictAreaNavigator = createBottomTabNavigator(
+  {
+    Home: {
+      screen: Home,
+      navigationOptions: () => ({
+        title: 'Início',
+        tabBarIcon: ({ tintColor }) => (
+          <Icon
+            name={Platform.OS === 'ios' ? 'ios-home' : 'md-home'}
+            size={30}
+            color={tintColor}
+          />
+        )
+      })
+    },
+    Notification: {
+      screen: Notification,
+      navigationOptions: () => ({
+        title: 'Avaliações',
+        tabBarIcon: ({ tintColor }) => (
+          <Icon
+            name={Platform.OS === 'ios' ? 'ios-star' : 'md-star'}
+            size={30}
+            color={tintColor}
+          />
+        )
+      })
+    },
+    Review: {
+      screen: Review,
+      navigationOptions: () => ({
+        title: 'Avisos',
+        tabBarIcon: ({ tintColor }) => (
+          <Icon
+            name={
+              Platform.OS === 'ios' ? 'ios-notifications' : 'md-notifications'
+            }
+            size={30}
+            color={tintColor}
+          />
+        )
+      })
+    },
+    Profile: {
+      screen: Profile,
+      navigationOptions: () => ({
+        title: 'Perfil',
+        tabBarIcon: ({ tintColor }) => (
+          <Icon
+            name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'}
+            size={30}
+            color={tintColor}
+          />
+        )
+      })
+    }
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: '#fd0',
+      inactiveTintColor: '#fff',
+      labelStyle: {
+        fontSize: 12
+      },
+      style: {
+        backgroundColor: '#202020'
+      }
+    }
+  }
+)
 
 const Routes = createSwitchNavigator(
   {
