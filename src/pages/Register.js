@@ -27,6 +27,13 @@ export default class Register extends Component {
     }
   }
 
+  static navigationOptions = {
+    headerStyle: {
+      backgroundColor: '#fd0'
+    },
+    headerTintColor: '#000'
+  }
+
   render() {
     const { subscription, subscription_type } = this.state
     const { navigation } = this.props
@@ -216,7 +223,7 @@ export default class Register extends Component {
 const styles = StyleSheet.create({
   header: {
     backgroundColor: '#fd0',
-    height: 260,
+    height: 200,
     alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center'
@@ -225,8 +232,8 @@ const styles = StyleSheet.create({
   logo: {
     width: 120,
     height: 120,
-    marginTop: 30,
-    marginBottom: 50,
+    marginTop: 10,
+    marginBottom: 60,
     alignItems: 'center'
   },
 

@@ -1,5 +1,6 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
+import { createStackNavigator } from 'react-navigation-stack'
 
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -10,18 +11,27 @@ import Review from './pages/Review'
 import Notification from './pages/Notification'
 import Profile from './pages/Profile'
 
-const Routes = createAppContainer(
-  createSwitchNavigator({
-    Login,
-    Register,
-    ForgotPassword
-  }),
-  createBottomTabNavigator({
-    Home,
-    Notification,
-    Review,
-    Profile
-  })
+const GuestAreaNavigator = createStackNavigator({
+  Login,
+  Register,
+  ForgotPassword
+})
+
+const RestrictAreaNavigator = createBottomTabNavigator({
+  Home,
+  Notification,
+  Review,
+  Profile
+})
+
+const Routes = createSwitchNavigator(
+  {
+    GuestAreaNavigator,
+    RestrictAreaNavigator
+  },
+  {
+    initialRouteName: 'GuestAreaNavigator'
+  }
 )
 
-export default Routes
+export default createAppContainer(Routes)

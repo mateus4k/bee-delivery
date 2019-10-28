@@ -28,6 +28,12 @@ export default class Login extends Component {
     }
   }
 
+  static navigationOptions = () => {
+    return {
+      header: () => null
+    }
+  }
+
   render() {
     const { navigation } = this.props
     const { subscription, subscription_type } = this.state
