@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import {
   Image,
   ImageBackground,
@@ -10,7 +10,8 @@ import {
   View,
   Linking,
   StatusBar,
-  StyleSheet
+  StyleSheet,
+  AsyncStorage
 } from 'react-native'
 import { TextInputMask } from 'react-native-masked-text'
 import { validateCnpj } from 'react-native-masked-text/dist/lib/masks/cnpj.mask'
@@ -24,24 +25,43 @@ export default class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      subscription: '',
-      subscription_type: ''
+      document: '',
+      document_type: '',
+      password: ''
     }
   }
 
   static navigationOptions = {
-    header: () => null
+    header: null
+  }
+
+  componentDidMount() {
+    AsyncStorage.getItem('@BeeDelivery:user').then(user => {
+      if (user) this.props.navigation.navigate('Home')
+    })
+  }
+
+  handleSubmit = async () => {
+    const { document, password } = this.state
+    if ((document.length === 14 || document.length === 18) && password) {
+      await AsyncStorage.setItem('@BeeDelivery:user', document)
+      this.props.navigation.navigate('Home')
+    }
   }
 
   render() {
     const { navigation } = this.props
-    const { subscription, subscription_type } = this.state
+    const { document, document_type, password } = this.state
+
     return (
       <ImageBackground source={LoginBackground} style={styles.backgroundImage}>
         <StatusBar barStyle="light-content" translucent />
-
         <View style={styles.backgroundOverlay} />
-        <KeyboardAvoidingView behavior="padding" style={styles.container}>
+
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : ''}
+          style={styles.container}
+        >
           <Image source={Logo} style={styles.logo} resizeMode={'center'} />
 
           {/* Form */}
@@ -54,10 +74,10 @@ export default class Login extends Component {
                 keyboardType="number-pad"
                 autoCorrect={false}
                 type="custom"
-                value={subscription}
+                value={document}
                 options={{
                   mask:
-                    subscription_type === 'cpf'
+                    document_type === 'cpf'
                       ? '999.999.999-99*'
                       : '99.999.999/9999-99',
                   validator: value => {
@@ -66,8 +86,8 @@ export default class Login extends Component {
                 }}
                 onChangeText={text =>
                   this.setState({
-                    subscription: text,
-                    subscription_type: text.length > 14 ? 'cnpj' : 'cpf'
+                    document: text,
+                    document_type: text.length > 14 ? 'cnpj' : 'cpf'
                   })
                 }
               />
@@ -86,6 +106,12 @@ export default class Login extends Component {
                 placeholderTextColor="#555"
                 secureTextEntry={true}
                 autoCorrect={false}
+                value={password}
+                onChangeText={text =>
+                  this.setState({
+                    password: text
+                  })
+                }
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-lock' : 'md-lock'}
@@ -104,9 +130,7 @@ export default class Login extends Component {
 
             <TouchableOpacity
               style={styles.button}
-              onPress={() => {
-                navigation.navigate('Home')
-              }}
+              onPress={() => this.handleSubmit()}
             >
               <Text style={styles.buttonText}>Entrar</Text>
             </TouchableOpacity>

@@ -8,7 +8,8 @@ import {
   Platform,
   Image,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  AsyncStorage
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
@@ -16,6 +17,11 @@ export default function Profile({ navigation }) {
   const [points, setPoints] = useState(181.43)
   const [stars, setStars] = useState(4.13)
   const [followers, setFollowers] = useState(7)
+
+  handleLogout = async () => {
+    await AsyncStorage.removeItem('@BeeDelivery:user')
+    navigation.navigate('Login')
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -127,7 +133,7 @@ export default function Profile({ navigation }) {
 
             <TouchableOpacity
               style={styles.menuList}
-              onPress={() => navigation.navigate('Login')}
+              onPress={() => handleLogout()}
             >
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-exit' : 'md-exit'}
