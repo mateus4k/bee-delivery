@@ -16,6 +16,7 @@
     "react-native-masked-text": "^1.13.0",
     "react-native-reanimated": "~1.2.0",
     "react-native-screens": "^1.0.0-alpha.23",
+    "react-native-shimmer-placeholder": "https://github.com/tomzaku/react-native-shimmer-placeholder.git#expo",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "^0.11.7",
     "react-navigation": "^4.0.10",

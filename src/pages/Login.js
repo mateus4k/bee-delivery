@@ -59,7 +59,10 @@ export default class Login extends Component {
         <View style={styles.backgroundOverlay} />
 
         <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : ''}
+          behavior={Platform.select({
+            ios: 'padding',
+            android: null
+          })}
           style={styles.container}
         >
           <Image source={Logo} style={styles.logo} resizeMode={'center'} />
@@ -147,13 +150,17 @@ export default class Login extends Component {
             {/* External links */}
             <View style={styles.externalLinksContainer}>
               <TouchableOpacity
+                hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
                 onPress={() =>
                   Linking.openURL('https://beedelivery.com.br/faq')
                 }
               >
                 <Text style={styles.externalLinksText}>Dúvidas?</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+              <TouchableOpacity
+                hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
+                onPress={() => navigation.navigate('Register')}
+              >
                 <Text style={styles.externalLinksText}>Cadastro</Text>
               </TouchableOpacity>
             </View>

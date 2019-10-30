@@ -4317,6 +4317,10 @@ react-native-safe-area-view@^0.14.1, react-native-safe-area-view@^0.14.6:
   dependencies:
     debounce "^1.2.0"
 
+"react-native-shimmer-placeholder@https://github.com/tomzaku/react-native-shimmer-placeholder.git#expo":
+  version "1.0.31"
+  resolved "https://github.com/tomzaku/react-native-shimmer-placeholder.git#8c9ed6b7cfdc1a582b6ffd8ca4921d8251e1fc55"
+
 react-native-tab-view@^2.9.0:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.10.0.tgz#5e249e5650502010013449ffd4e5edc18a95364b"
