@@ -75,6 +75,8 @@ export default class Login extends Component {
                 autoCorrect={false}
                 type="custom"
                 value={document}
+                returnKeyType="next"
+                onSubmitEditing={() => this.passwordInput.focus()}
                 options={{
                   mask:
                     document_type === 'cpf'
@@ -107,6 +109,11 @@ export default class Login extends Component {
                 secureTextEntry={true}
                 autoCorrect={false}
                 value={password}
+                returnKeyType="go"
+                onSubmitEditing={() => this.handleSubmit()}
+                ref={input => {
+                  this.passwordInput = input
+                }}
                 onChangeText={text =>
                   this.setState({
                     password: text
