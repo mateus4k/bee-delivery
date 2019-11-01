@@ -36,8 +36,8 @@ const RestrictAreaNavigator = createBottomTabNavigator(
         )
       })
     },
-    Notification: {
-      screen: Notification,
+    Review: {
+      screen: Review,
       navigationOptions: () => ({
         title: 'Avaliações',
         tabBarIcon: ({ tintColor }) => (
@@ -49,8 +49,8 @@ const RestrictAreaNavigator = createBottomTabNavigator(
         )
       })
     },
-    Review: {
-      screen: Review,
+    Notification: {
+      screen: Notification,
       navigationOptions: () => ({
         title: 'Avisos',
         tabBarIcon: ({ tintColor }) => (
