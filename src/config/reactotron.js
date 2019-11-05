@@ -7,6 +7,7 @@ if (process.env.NODE_ENV === 'development') {
     .use(reactotronRedux())
     .use(sagaPlugin())
     .use(overlay())
+    .useReactNative()
     .connect()
 
   tron.clear()
