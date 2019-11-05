@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import {
   Image,
   ImageBackground,
@@ -22,7 +22,7 @@ import LoginBackground from '../assets/login.png'
 import Logo from '../assets/logo.png'
 
 export default class Login extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       document: '',
@@ -35,7 +35,7 @@ export default class Login extends Component {
     header: null
   }
 
-  componentDidMount() {
+  componentDidMount () {
     AsyncStorage.getItem('@BeeDelivery:user').then(user => {
       if (user) this.props.navigation.navigate('Home')
     })
@@ -49,13 +49,13 @@ export default class Login extends Component {
     }
   }
 
-  render() {
+  render () {
     const { navigation } = this.props
     const { document, document_type, password } = this.state
 
     return (
       <ImageBackground source={LoginBackground} style={styles.backgroundImage}>
-        <StatusBar barStyle="light-content" translucent />
+        <StatusBar barStyle='light-content' translucent />
         <View style={styles.backgroundOverlay} />
 
         <KeyboardAvoidingView
@@ -65,20 +65,20 @@ export default class Login extends Component {
           })}
           style={styles.container}
         >
-          <Image source={Logo} style={styles.logo} resizeMode={'center'} />
+          <Image source={Logo} style={styles.logo} resizeMode="center" />
 
           {/* Form */}
           <View style={styles.form}>
             <View style={styles.inputContainer}>
               <TextInputMask
                 style={styles.inputText}
-                placeholder="CPF/CNPJ"
-                placeholderTextColor="#555"
-                keyboardType="number-pad"
+                placeholder='CPF/CNPJ'
+                placeholderTextColor='#555'
+                keyboardType='number-pad'
                 autoCorrect={false}
-                type="custom"
+                type='custom'
                 value={document}
-                returnKeyType="next"
+                returnKeyType='next'
                 onSubmitEditing={() => this.passwordInput.focus()}
                 options={{
                   mask:
@@ -93,12 +93,11 @@ export default class Login extends Component {
                   this.setState({
                     document: text,
                     document_type: text.length > 14 ? 'cnpj' : 'cpf'
-                  })
-                }
+                  })}
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'}
-                color="#555"
+                color='#555'
                 size={25}
                 style={styles.icons}
               />
@@ -107,12 +106,12 @@ export default class Login extends Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.inputText}
-                placeholder="Senha"
-                placeholderTextColor="#555"
-                secureTextEntry={true}
+                placeholder='Senha'
+                placeholderTextColor='#555'
+                secureTextEntry
                 autoCorrect={false}
                 value={password}
-                returnKeyType="go"
+                returnKeyType='go'
                 onSubmitEditing={() => this.handleSubmit()}
                 ref={input => {
                   this.passwordInput = input
@@ -120,12 +119,11 @@ export default class Login extends Component {
                 onChangeText={text =>
                   this.setState({
                     password: text
-                  })
-                }
+                  })}
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-lock' : 'md-lock'}
-                color="#555"
+                color='#555'
                 size={25}
                 style={styles.icons}
               />
@@ -152,8 +150,7 @@ export default class Login extends Component {
               <TouchableOpacity
                 hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
                 onPress={() =>
-                  Linking.openURL('https://beedelivery.com.br/faq')
-                }
+                  Linking.openURL('https://beedelivery.com.br/faq')}
               >
                 <Text style={styles.externalLinksText}>Dúvidas?</Text>
               </TouchableOpacity>
