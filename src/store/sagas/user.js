@@ -10,7 +10,8 @@ export function * addUser (action) {
       id: data.id,
       name: data.full_name,
       description: data.description,
-      url: data.html_url
+      url: data.html_url,
+      avatar: data.avatar_url
     }
 
     yield put(UserActions.addUserSuccess(userData))
