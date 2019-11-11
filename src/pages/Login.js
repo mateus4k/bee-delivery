@@ -22,13 +22,10 @@ import LoginBackground from '../assets/login.png'
 import Logo from '../assets/logo.png'
 
 export default class Login extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      document: '',
-      document_type: '',
-      password: ''
-    }
+  state = {
+    document: '',
+    documentType: '',
+    password: ''
   }
 
   static navigationOptions = {
@@ -51,7 +48,7 @@ export default class Login extends Component {
 
   render () {
     const { navigation } = this.props
-    const { document, document_type, password } = this.state
+    const { document, documentType, password } = this.state
 
     return (
       <ImageBackground source={LoginBackground} style={styles.backgroundImage}>
@@ -65,7 +62,7 @@ export default class Login extends Component {
           })}
           style={styles.container}
         >
-          <Image source={Logo} style={styles.logo} resizeMode="center" />
+          <Image source={Logo} style={styles.logo} resizeMode='center' />
 
           {/* Form */}
           <View style={styles.form}>
@@ -82,7 +79,7 @@ export default class Login extends Component {
                 onSubmitEditing={() => this.passwordInput.focus()}
                 options={{
                   mask:
-                    document_type === 'cpf'
+                    documentType === 'cpf'
                       ? '999.999.999-99*'
                       : '99.999.999/9999-99',
                   validator: value => {
@@ -92,7 +89,7 @@ export default class Login extends Component {
                 onChangeText={text =>
                   this.setState({
                     document: text,
-                    document_type: text.length > 14 ? 'cnpj' : 'cpf'
+                    documentType: text.length > 14 ? 'cnpj' : 'cpf'
                   })}
               />
               <Icon
