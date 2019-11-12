@@ -4,30 +4,39 @@ import {
   SafeAreaView,
   StyleSheet,
   StatusBar,
-  ScrollView,
-  Dimensions
+  ScrollView
 } from 'react-native'
 
 import HeaderContainer from './HeaderContainer'
 
-export default MainContainer = ({ name, children }) => (
+const MainContainer = ({ name, children }) => (
   <SafeAreaView style={styles.container}>
-    <StatusBar translucent backgroundColor={'#202020'} />
-    <ScrollView>
-      <HeaderContainer name={name} />
+    <StatusBar barStyle='light-content' backgroundColor='#202020' />
+    <HeaderContainer name={name} />
+    <ScrollView style={styles.scrollContainer}>
       <View style={styles.mainContainer}>{children}</View>
     </ScrollView>
   </SafeAreaView>
 )
+
+export default MainContainer
+
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#202020' },
+  container: {
+    flex: 1,
+    backgroundColor: '#202020'
+  },
+
+  scrollContainer: {
+    backgroundColor: '#202020'
+  },
 
   mainContainer: {
     flex: 1,
-    height: Dimensions.get('window').height,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    marginTop: -10,
-    backgroundColor: '#fff'
+    alignSelf: 'stretch',
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    backgroundColor: '#fff',
+    paddingBottom: 5
   }
 })

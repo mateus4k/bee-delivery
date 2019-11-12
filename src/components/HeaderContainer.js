@@ -1,7 +1,7 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Platform } from 'react-native'
 
-export default HeaderContainer = ({ name }) => (
+const HeaderContainer = ({ name }) => (
   <View style={styles.headerContainer}>
     <Text style={styles.headerText}>{name}</Text>
   </View>
@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#202020',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 30,
-    paddingBottom: 20
+    paddingTop: Platform.OS === 'ios' ? 5 : 30,
+    paddingBottom: 10
   },
 
   headerText: {
@@ -22,3 +22,5 @@ const styles = StyleSheet.create({
     color: '#fff'
   }
 })
+
+export default HeaderContainer
