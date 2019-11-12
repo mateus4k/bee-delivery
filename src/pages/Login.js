@@ -52,7 +52,7 @@ export default class Login extends Component {
 
     return (
       <ImageBackground source={LoginBackground} style={styles.backgroundImage}>
-        <StatusBar barStyle='light-content' translucent />
+        <StatusBar barStyle='dark-content' translucent />
         <View style={styles.backgroundOverlay} />
 
         <KeyboardAvoidingView
