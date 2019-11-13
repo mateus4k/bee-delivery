@@ -11,12 +11,12 @@ export const Types = {
  * Reducer
  */
 const INITIAL_STATE = {
-  data: [],
   loading: false,
+  data: [],
   error: null
 }
 
-export default function User (state = INITIAL_STATE, action) {
+export default function user (state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.ADD_REQUEST:
       return { ...state, loading: true }

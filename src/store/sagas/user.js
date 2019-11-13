@@ -1,6 +1,8 @@
 import { call, put } from 'redux-saga/effects'
-import { Creators as UserActions } from '../ducks/user'
+
 import api from '../../services/api'
+
+import { Creators as UserAction } from '../ducks/user'
 
 export function * addUser (action) {
   try {
@@ -14,8 +16,8 @@ export function * addUser (action) {
       avatar: data.avatar_url
     }
 
-    yield put(UserActions.addUserSuccess(userData))
+    yield put(UserAction.addUserSuccess(userData))
   } catch (error) {
-    yield put(UserActions.addUserFailure('User not found'))
+    yield put(UserAction.addUserFailure('User not found'))
   }
 }
