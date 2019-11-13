@@ -10,7 +10,7 @@ export function * addUser (action) {
 
     const userData = {
       id: data.id,
-      name: data.full_name,
+      name: data.name,
       description: data.description,
       url: data.html_url,
       avatar: data.avatar_url
