@@ -6,6 +6,10 @@ import store from './src/store'
 
 import './src/config/reactotron'
 
+if (process.env.NODE_ENV === 'development') {
+  require('react-devtools')
+}
+
 const App = () => (
   <Provider store={store}>
     <Routes />
