@@ -18,6 +18,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 150,
     alignSelf: 'center',
-    height: Dimensions.get('window').height - 100
+    height: Dimensions.get('window').height - 80
   }
 })
