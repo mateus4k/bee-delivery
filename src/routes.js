@@ -11,6 +11,7 @@ import Register from './pages/Register'
 import ForgotPassword from './pages/ForgotPassword'
 
 import Home from './pages/Home'
+import Zone from './pages/Zone'
 import Review from './pages/Review'
 import Notification from './pages/Notification'
 import Profile from './pages/Profile'
@@ -30,6 +31,19 @@ const RestrictAreaNavigator = createBottomTabNavigator(
         tabBarIcon: ({ tintColor }) => (
           <Icon
             name={Platform.OS === 'ios' ? 'ios-home' : 'md-home'}
+            size={30}
+            color={tintColor}
+          />
+        )
+      })
+    },
+    Zone: {
+      screen: Zone,
+      navigationOptions: () => ({
+        title: 'Zonas',
+        tabBarIcon: ({ tintColor }) => (
+          <Icon
+            name={Platform.OS === 'ios' ? 'ios-map' : 'md-map'}
             size={30}
             color={tintColor}
           />
