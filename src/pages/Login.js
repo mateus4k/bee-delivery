@@ -11,12 +11,15 @@ import {
   Linking,
   StatusBar,
   StyleSheet,
-  AsyncStorage
+  AsyncStorage,
+  ActivityIndicator,
+  Dimensions
 } from 'react-native'
 import { TextInputMask } from 'react-native-masked-text'
 import { validateCnpj } from 'react-native-masked-text/dist/lib/masks/cnpj.mask'
 import { validateCPF } from 'react-native-masked-text/dist/lib/masks/cpf.mask'
 import Icon from 'react-native-vector-icons/Ionicons'
+import PropTypes from 'prop-types'
 
 import LoginBackground from '../assets/login.png'
 import Logo from '../assets/logo.png'
@@ -25,30 +28,58 @@ export default class Login extends Component {
   state = {
     document: '',
     documentType: '',
-    password: ''
+    password: '',
+    loading: false,
+    error: null
   }
 
   static navigationOptions = {
     header: null
   }
 
+  static propTypes = {
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func.isRequired
+    }).isRequired
+  }
+
   componentDidMount () {
+    const { navigation } = this.props
     AsyncStorage.getItem('@BeeDelivery:user').then(user => {
-      if (user) this.props.navigation.navigate('Home')
+      if (user) navigation.navigate('Home')
     })
   }
 
-  handleSubmit = async () => {
-    const { document, password } = this.state
+  checkDocument = async (document, password) => {
     if ((document.length === 14 || document.length === 18) && password) {
-      await AsyncStorage.setItem('@BeeDelivery:user', document)
-      this.props.navigation.navigate('Home')
+      return document
+    }
+  }
+
+  saveUser = async document => {
+    await AsyncStorage.setItem('@BeeDelivery:user', document)
+  }
+
+  signIn = async () => {
+    this.setState({ loading: true, error: null })
+
+    const { document, password } = this.state
+    const { navigation } = this.props
+
+    try {
+      const check = await this.checkDocument(document, password)
+      if (!check) throw 'Credenciais inválidas'
+
+      await this.saveUser(document)
+      navigation.navigate('Home')
+    } catch (err) {
+      this.setState({ loading: false, error: err })
     }
   }
 
   render () {
     const { navigation } = this.props
-    const { document, documentType, password } = this.state
+    const { document, documentType, password, loading, error } = this.state
 
     return (
       <ImageBackground source={LoginBackground} style={styles.backgroundImage}>
@@ -109,7 +140,7 @@ export default class Login extends Component {
                 autoCorrect={false}
                 value={password}
                 returnKeyType='go'
-                onSubmitEditing={() => this.handleSubmit()}
+                onSubmitEditing={() => this.signIn()}
                 ref={input => {
                   this.passwordInput = input
                 }}
@@ -135,9 +166,13 @@ export default class Login extends Component {
 
             <TouchableOpacity
               style={styles.button}
-              onPress={() => this.handleSubmit()}
+              onPress={() => this.signIn()}
             >
-              <Text style={styles.buttonText}>Entrar</Text>
+              {loading ? (
+                <ActivityIndicator size='small' color='#FFF' />
+              ) : (
+                <Text style={styles.buttonText}>Entrar</Text>
+              )}
             </TouchableOpacity>
 
             <Text style={styles.version}>v0.1.0</Text>
@@ -160,6 +195,11 @@ export default class Login extends Component {
             </View>
           </View>
         </KeyboardAvoidingView>
+        {!!error && (
+          <View style={styles.errorContainer}>
+            <Text style={styles.errorText}>{error}</Text>
+          </View>
+        )}
       </ImageBackground>
     )
   }
@@ -261,6 +301,23 @@ const styles = StyleSheet.create({
 
   forgotPasswordText: {
     color: '#fff',
+    fontSize: 15
+  },
+
+  errorContainer: {
+    flex: 1,
+    backgroundColor: '#0008',
+    width: Dimensions.get('window').width,
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    paddingVertical: 14,
+    alignItems: 'center'
+  },
+
+  errorText: {
+    color: '#fff',
+    textAlign: 'center',
     fontSize: 15
   }
 })
