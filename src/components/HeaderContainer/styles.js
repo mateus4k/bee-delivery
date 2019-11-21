@@ -1,11 +1,4 @@
-import React from 'react'
-import { View, Text, StyleSheet, Platform } from 'react-native'
-
-const HeaderContainer = ({ name }) => (
-  <View style={styles.headerContainer}>
-    <Text style={styles.headerText}>{name}</Text>
-  </View>
-)
+import { StyleSheet, Platform } from 'react-native'
 
 const styles = StyleSheet.create({
   headerContainer: {
@@ -23,4 +16,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default HeaderContainer
+export default styles

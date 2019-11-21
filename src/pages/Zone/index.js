@@ -1,9 +1,16 @@
 import React from 'react'
 
+import { Image } from 'react-native'
+
+import Logo from '../../assets/logo.png'
 import MainContainer from '../../components/MainContainer'
 
 import styles from './styles'
 
-const Review = () => <MainContainer name='Zonas' />
+const Zones = () => (
+  <MainContainer name='Zonas'>
+    <Image source={Logo} style={styles.logo} resizeMode='center' />
+  </MainContainer>
+)
 
-export default Review
+export default Zones
