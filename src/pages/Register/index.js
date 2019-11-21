@@ -7,8 +7,6 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  Dimensions,
-  StyleSheet,
   Linking,
   ScrollView
 } from 'react-native'
@@ -16,12 +14,16 @@ import { TextInputMask } from 'react-native-masked-text'
 import { validateCnpj } from 'react-native-masked-text/dist/lib/masks/cnpj.mask'
 import { validateCPF } from 'react-native-masked-text/dist/lib/masks/cpf.mask'
 import Icon from 'react-native-vector-icons/Ionicons'
-import Logo from '../assets/logo.png'
+import PropTypes from 'prop-types'
+
+import Logo from '../../assets/logo.png'
+
+import styles from './styles'
 
 export default class Register extends Component {
   state = {
-    subscription: '',
-    subscriptionType: ''
+    document: '',
+    documentType: ''
   }
 
   static navigationOptions = {
@@ -31,14 +33,20 @@ export default class Register extends Component {
     headerTintColor: '#000'
   }
 
-  render () {
-    const { subscription, subscriptionType } = this.state
+  static propTypes = {
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func.isRequired
+    }).isRequired
+  }
+
+  render() {
+    const { document, documentType } = this.state
     const { navigation } = this.props
     return (
       <ScrollView>
-        <KeyboardAvoidingView behavior='padding' style={styles.container}>
+        <KeyboardAvoidingView behavior="padding" style={styles.container}>
           <View style={styles.header}>
-            <Image source={Logo} style={styles.logo} resizeMode='center' />
+            <Image source={Logo} style={styles.logo} resizeMode="center" />
           </View>
 
           {/* Form */}
@@ -55,13 +63,13 @@ export default class Register extends Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.inputText}
-                placeholder='Estado'
-                placeholderTextColor='#777'
+                placeholder="Estado"
+                placeholderTextColor="#777"
                 autoCorrect
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-map' : 'md-map'}
-                color='#777'
+                color="#777"
                 size={25}
                 style={styles.icons}
               />
@@ -71,13 +79,13 @@ export default class Register extends Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.inputText}
-                placeholder='Cidade'
-                placeholderTextColor='#777'
+                placeholder="Cidade"
+                placeholderTextColor="#777"
                 autoCorrect
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-locate' : 'md-locate'}
-                color='#777'
+                color="#777"
                 size={25}
                 style={styles.icons}
               />
@@ -87,15 +95,15 @@ export default class Register extends Component {
             <View style={styles.inputContainer}>
               <TextInputMask
                 style={styles.inputText}
-                placeholder='CPF/CNPJ'
-                placeholderTextColor='#777'
-                keyboardType='number-pad'
+                placeholder="CPF/CNPJ"
+                placeholderTextColor="#777"
+                keyboardType="number-pad"
                 autoCorrect={false}
-                type='custom'
-                value={subscription}
+                type="custom"
+                value={document}
                 options={{
                   mask:
-                    subscriptionType === 'cpf'
+                    documentType === 'cpf'
                       ? '999.999.999-99*'
                       : '99.999.999/9999-99',
                   validator: value => {
@@ -104,13 +112,14 @@ export default class Register extends Component {
                 }}
                 onChangeText={text =>
                   this.setState({
-                    subscription: text,
-                    subscriptionType: text.length > 14 ? 'cnpj' : 'cpf'
-                  })}
+                    document: text,
+                    documentType: text.length > 14 ? 'cnpj' : 'cpf'
+                  })
+                }
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'}
-                color='#777'
+                color="#777"
                 size={25}
                 style={styles.icons}
               />
@@ -120,13 +129,13 @@ export default class Register extends Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.inputText}
-                placeholder='Nome Completo'
-                placeholderTextColor='#777'
+                placeholder="Nome Completo"
+                placeholderTextColor="#777"
                 autoCorrect
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-people' : 'md-people'}
-                color='#777'
+                color="#777"
                 size={25}
                 style={styles.icons}
               />
@@ -136,16 +145,16 @@ export default class Register extends Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.inputText}
-                placeholder='E-mail'
-                placeholderTextColor='#777'
-                autoCompleteType='email'
-                keyboardType='email-address'
-                textContentType='emailAddress'
+                placeholder="E-mail"
+                placeholderTextColor="#777"
+                autoCompleteType="email"
+                keyboardType="email-address"
+                textContentType="emailAddress"
                 autoCorrect={false}
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-mail' : 'md-mail'}
-                color='#777'
+                color="#777"
                 size={25}
                 style={styles.icons}
               />
@@ -155,14 +164,14 @@ export default class Register extends Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.inputText}
-                placeholder='Senha'
-                placeholderTextColor='#777'
+                placeholder="Senha"
+                placeholderTextColor="#777"
                 secureTextEntry
                 autoCorrect={false}
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-lock' : 'md-lock'}
-                color='#777'
+                color="#777"
                 size={25}
                 style={styles.icons}
               />
@@ -172,14 +181,14 @@ export default class Register extends Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.inputText}
-                placeholder='Confirme sua senha'
-                placeholderTextColor='#777'
+                placeholder="Confirme sua senha"
+                placeholderTextColor="#777"
                 secureTextEntry
                 autoCorrect={false}
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-lock' : 'md-lock'}
-                color='#777'
+                color="#777"
                 size={25}
                 style={styles.icons}
               />
@@ -201,7 +210,8 @@ export default class Register extends Component {
                 onPress={() =>
                   Linking.openURL(
                     'https://beedelivery.com.br/termos-uso-entregador'
-                )}
+                  )
+                }
               >
                 <Text style={styles.termsOfUseButtonText}>Termos de Uso</Text>
               </TouchableOpacity>
@@ -212,120 +222,3 @@ export default class Register extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  header: {
-    backgroundColor: '#fd0',
-    height: 200,
-    alignSelf: 'stretch',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-
-  logo: {
-    width: 120,
-    height: 120,
-    marginTop: 10,
-    marginBottom: 60,
-    alignItems: 'center'
-  },
-
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#ddd'
-  },
-
-  form: {
-    width: Dimensions.get('window').width - 30,
-    alignSelf: 'center',
-    paddingVertical: 35,
-    paddingHorizontal: 20,
-    backgroundColor: '#fff',
-    marginTop: -50,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.5,
-    elevation: 3
-  },
-
-  titleContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-    marginBottom: 20
-  },
-
-  title: {
-    fontWeight: '400',
-    fontSize: 20
-  },
-
-  textBold: {
-    fontWeight: '600'
-  },
-
-  subtitle: {
-    fontWeight: '400',
-    fontSize: 18
-  },
-
-  inputText: {
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    backgroundColor: 'rgba(255, 255, 255, 0.4)',
-    borderRadius: 40,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    paddingVertical: 14,
-    paddingHorizontal: 50,
-    marginVertical: 6,
-    fontSize: 16
-  },
-
-  inputContainer: {
-    justifyContent: 'center'
-  },
-
-  icons: {
-    position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginHorizontal: 20
-  },
-
-  button: {
-    height: 60,
-    borderRadius: 40,
-    backgroundColor: '#fd0',
-    marginVertical: 6,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-
-  buttonText: {
-    textTransform: 'uppercase',
-    color: '#333',
-    fontWeight: '600'
-  },
-
-  termsOfUseContainer: {
-    justifyContent: 'center',
-    marginVertical: 15
-  },
-
-  termsOfUseText: {
-    color: '#777',
-    marginRight: 2,
-    fontSize: 14,
-    textAlign: 'center'
-  },
-
-  termsOfUseButtonText: {
-    color: '#fd0',
-    fontWeight: '600',
-    fontSize: 14,
-    textAlign: 'center'
-  }
-})

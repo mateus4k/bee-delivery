@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
-import MainContainer from '../components/MainContainer'
-import CardReview from '../components/CardReview'
+import MainContainer from '../../components/MainContainer'
+import CardReview from '../../components/CardReview'
+
+import styles from './styles'
 
 export default class Review extends Component {
   state = {
@@ -57,10 +59,10 @@ export default class Review extends Component {
     ]
   }
 
-  render() {
+  render () {
     const { reviews } = this.state
     return (
-      <MainContainer name="Avaliações">
+      <MainContainer name='Avaliações'>
         {reviews &&
           reviews.map(review => (
             <CardReview
