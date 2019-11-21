@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, SafeAreaView, StatusBar, ScrollView } from 'react-native'
+import PropTypes from 'prop-types'
 
 import HeaderContainer from '../HeaderContainer'
 
@@ -14,5 +15,10 @@ const MainContainer = ({ name, children }) => (
     </ScrollView>
   </SafeAreaView>
 )
+
+MainContainer.propTypes = {
+  name: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired
+}
 
 export default MainContainer

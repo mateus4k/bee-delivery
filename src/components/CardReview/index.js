@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, Platform, Image, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
+import PropTypes from 'prop-types'
 
 import styles from './styles'
 
@@ -32,5 +33,13 @@ const CardReview = ({ image, title, user, description, stars }) => (
     </View>
   </TouchableOpacity>
 )
+
+CardReview.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  stars: PropTypes.number.isRequired
+}
 
 export default CardReview
