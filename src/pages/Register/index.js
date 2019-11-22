@@ -19,6 +19,7 @@ import PropTypes from 'prop-types'
 import Logo from '../../assets/logo.png'
 
 import styles from './styles'
+import { colors } from '../../styles'
 
 export default class Register extends Component {
   state = {
@@ -28,9 +29,9 @@ export default class Register extends Component {
 
   static navigationOptions = {
     headerStyle: {
-      backgroundColor: '#fd0'
+      backgroundColor: colors.primary
     },
-    headerTintColor: '#000'
+    headerTintColor: colors.black
   }
 
   static propTypes = {
@@ -39,14 +40,14 @@ export default class Register extends Component {
     }).isRequired
   }
 
-  render() {
+  render () {
     const { document, documentType } = this.state
     const { navigation } = this.props
     return (
       <ScrollView>
-        <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <KeyboardAvoidingView behavior='padding' style={styles.container}>
           <View style={styles.header}>
-            <Image source={Logo} style={styles.logo} resizeMode="center" />
+            <Image source={Logo} style={styles.logo} resizeMode='center' />
           </View>
 
           {/* Form */}
@@ -63,13 +64,13 @@ export default class Register extends Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.inputText}
-                placeholder="Estado"
-                placeholderTextColor="#777"
+                placeholder='Estado'
+                placeholderTextColor={colors.dark}
                 autoCorrect
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-map' : 'md-map'}
-                color="#777"
+                color={colors.dark}
                 size={25}
                 style={styles.icons}
               />
@@ -79,13 +80,13 @@ export default class Register extends Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.inputText}
-                placeholder="Cidade"
-                placeholderTextColor="#777"
+                placeholder='Cidade'
+                placeholderTextColor={colors.dark}
                 autoCorrect
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-locate' : 'md-locate'}
-                color="#777"
+                color={colors.dark}
                 size={25}
                 style={styles.icons}
               />
@@ -95,11 +96,11 @@ export default class Register extends Component {
             <View style={styles.inputContainer}>
               <TextInputMask
                 style={styles.inputText}
-                placeholder="CPF/CNPJ"
-                placeholderTextColor="#777"
-                keyboardType="number-pad"
+                placeholder='CPF/CNPJ'
+                placeholderTextColor={colors.dark}
+                keyboardType='number-pad'
                 autoCorrect={false}
-                type="custom"
+                type='custom'
                 value={document}
                 options={{
                   mask:
@@ -114,12 +115,11 @@ export default class Register extends Component {
                   this.setState({
                     document: text,
                     documentType: text.length > 14 ? 'cnpj' : 'cpf'
-                  })
-                }
+                  })}
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'}
-                color="#777"
+                color={colors.dark}
                 size={25}
                 style={styles.icons}
               />
@@ -129,13 +129,13 @@ export default class Register extends Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.inputText}
-                placeholder="Nome Completo"
-                placeholderTextColor="#777"
+                placeholder='Nome Completo'
+                placeholderTextColor={colors.dark}
                 autoCorrect
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-people' : 'md-people'}
-                color="#777"
+                color={colors.dark}
                 size={25}
                 style={styles.icons}
               />
@@ -145,16 +145,16 @@ export default class Register extends Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.inputText}
-                placeholder="E-mail"
-                placeholderTextColor="#777"
-                autoCompleteType="email"
-                keyboardType="email-address"
-                textContentType="emailAddress"
+                placeholder='E-mail'
+                placeholderTextColor={colors.dark}
+                autoCompleteType='email'
+                keyboardType='email-address'
+                textContentType='emailAddress'
                 autoCorrect={false}
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-mail' : 'md-mail'}
-                color="#777"
+                color={colors.dark}
                 size={25}
                 style={styles.icons}
               />
@@ -164,14 +164,14 @@ export default class Register extends Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.inputText}
-                placeholder="Senha"
-                placeholderTextColor="#777"
+                placeholder='Senha'
+                placeholderTextColor={colors.dark}
                 secureTextEntry
                 autoCorrect={false}
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-lock' : 'md-lock'}
-                color="#777"
+                color={colors.dark}
                 size={25}
                 style={styles.icons}
               />
@@ -181,14 +181,14 @@ export default class Register extends Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.inputText}
-                placeholder="Confirme sua senha"
-                placeholderTextColor="#777"
+                placeholder='Confirme sua senha'
+                placeholderTextColor={colors.dark}
                 secureTextEntry
                 autoCorrect={false}
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-lock' : 'md-lock'}
-                color="#777"
+                color={colors.dark}
                 size={25}
                 style={styles.icons}
               />
@@ -210,8 +210,7 @@ export default class Register extends Component {
                 onPress={() =>
                   Linking.openURL(
                     'https://beedelivery.com.br/termos-uso-entregador'
-                  )
-                }
+                )}
               >
                 <Text style={styles.termsOfUseButtonText}>Termos de Uso</Text>
               </TouchableOpacity>

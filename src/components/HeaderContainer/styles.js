@@ -1,8 +1,9 @@
 import { StyleSheet, Platform } from 'react-native'
+import { colors } from '../../styles'
 
 const styles = StyleSheet.create({
   headerContainer: {
-    backgroundColor: '#202020',
+    backgroundColor: colors.darkness,
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Platform.OS === 'ios' ? 5 : 30,
@@ -12,7 +13,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontWeight: '600',
     fontSize: 22,
-    color: '#fff'
+    color: colors.white
   }
 })
 

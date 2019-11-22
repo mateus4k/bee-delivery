@@ -1,13 +1,14 @@
 import { StyleSheet } from 'react-native'
+import { colors } from '../../styles'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#202020'
+    backgroundColor: colors.darkness
   },
 
   scrollContainer: {
-    backgroundColor: '#202020'
+    backgroundColor: colors.darkness
   },
 
   mainContainer: {
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
     paddingBottom: 5
   }
 })

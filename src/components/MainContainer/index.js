@@ -5,10 +5,11 @@ import PropTypes from 'prop-types'
 import HeaderContainer from '../HeaderContainer'
 
 import styles from './styles'
+import { colors } from '../../styles'
 
 const MainContainer = ({ name, children }) => (
   <SafeAreaView style={styles.container}>
-    <StatusBar barStyle='light-content' backgroundColor='#202020' />
+    <StatusBar barStyle='light-content' backgroundColor={colors.darkness} />
     <HeaderContainer name={name} />
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.mainContainer}>{children}</View>

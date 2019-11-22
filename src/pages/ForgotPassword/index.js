@@ -17,6 +17,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import Logo from '../../assets/logo.png'
 
 import styles from './styles'
+import { colors } from '../../styles'
 
 export default class ForgotPassword extends Component {
   state = {
@@ -26,9 +27,9 @@ export default class ForgotPassword extends Component {
 
   static navigationOptions = {
     headerStyle: {
-      backgroundColor: '#fd0'
+      backgroundColor: colors.primary
     },
-    headerTintColor: '#000'
+    headerTintColor: colors.black
   }
 
   static propTypes = {
@@ -53,7 +54,7 @@ export default class ForgotPassword extends Component {
             <TextInputMask
               style={styles.inputText}
               placeholder='CPF/CNPJ'
-              placeholderTextColor='#777'
+              placeholderTextColor={colors.dark}
               keyboardType='number-pad'
               autoCorrect={false}
               type='custom'
@@ -75,7 +76,7 @@ export default class ForgotPassword extends Component {
             />
             <Icon
               name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'}
-              color='#777'
+              color={colors.dark}
               size={25}
               style={styles.icons}
             />
@@ -85,13 +86,13 @@ export default class ForgotPassword extends Component {
             <TextInput
               style={styles.inputText}
               placeholder='Senha'
-              placeholderTextColor='#777'
+              placeholderTextColor={colors.dark}
               secureTextEntry
               autoCorrect={false}
             />
             <Icon
               name={Platform.OS === 'ios' ? 'ios-lock' : 'md-lock'}
-              color='#777'
+              color={colors.dark}
               size={25}
               style={styles.icons}
             />

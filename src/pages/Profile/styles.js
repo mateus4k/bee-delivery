@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
 
+import { colors } from '../../styles'
+
 const styles = StyleSheet.create({
   userContainer: {
     alignItems: 'center',
@@ -24,7 +26,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 20,
     fontStyle: 'italic',
-    color: '#444',
+    color: colors.darker,
     marginVertical: 3
   },
 
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     paddingVertical: 20,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(0,0,0,.1)'
+    borderBottomColor: colors.darkSemiTransparent
   },
 
   icons: {
@@ -69,13 +71,13 @@ const styles = StyleSheet.create({
 
   menuText: {
     fontSize: 18,
-    color: '#444'
+    color: colors.darker
   },
 
   menuTextPoints: {
     fontSize: 15,
     marginLeft: 4,
-    color: '#888',
+    color: colors.regular,
     justifyContent: 'center'
   }
 })

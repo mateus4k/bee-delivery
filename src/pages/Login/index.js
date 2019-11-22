@@ -23,6 +23,7 @@ import LoginBackground from '../../assets/login.png'
 import Logo from '../../assets/logo.png'
 
 import styles from './styles'
+import { colors } from '../../styles'
 
 export default class Login extends Component {
   state = {
@@ -101,7 +102,7 @@ export default class Login extends Component {
               <TextInputMask
                 style={styles.inputText}
                 placeholder='CPF/CNPJ'
-                placeholderTextColor='#555'
+                placeholderTextColor={colors.darker}
                 keyboardType='number-pad'
                 autoCorrect={false}
                 type='custom'
@@ -125,7 +126,7 @@ export default class Login extends Component {
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'}
-                color='#555'
+                color={colors.darker}
                 size={25}
                 style={styles.icons}
               />
@@ -135,7 +136,7 @@ export default class Login extends Component {
               <TextInput
                 style={styles.inputText}
                 placeholder='Senha'
-                placeholderTextColor='#555'
+                placeholderTextColor={colors.darker}
                 secureTextEntry
                 autoCorrect={false}
                 value={password}
@@ -151,7 +152,7 @@ export default class Login extends Component {
               />
               <Icon
                 name={Platform.OS === 'ios' ? 'ios-lock' : 'md-lock'}
-                color='#555'
+                color={colors.darker}
                 size={25}
                 style={styles.icons}
               />
@@ -169,7 +170,7 @@ export default class Login extends Component {
               onPress={() => this.signIn()}
             >
               {loading ? (
-                <ActivityIndicator size='small' color='#FFF' />
+                <ActivityIndicator size='small' color={colors.white} />
               ) : (
                 <Text style={styles.buttonText}>Entrar</Text>
               )}

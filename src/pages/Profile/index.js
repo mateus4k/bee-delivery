@@ -17,6 +17,7 @@ import { Creators as UserAction } from '../../store/ducks/user'
 import MainContainer from '../../components/MainContainer'
 
 import styles from './styles'
+import { colors } from '../../styles'
 
 class Profile extends Component {
   state = {
@@ -48,7 +49,7 @@ class Profile extends Component {
           <ShimmerPlaceHolder
             style={styles.userImage}
             visible={!loading}
-            backgroundColorBehindBorder='#ddd'
+            backgroundColorBehindBorder={colors.lighter}
           >
             {this.props.user.data.map(user => (
               <Image
@@ -64,7 +65,7 @@ class Profile extends Component {
               autoRun
               style={styles.userInfoName}
               visible={!loading}
-              backgroundColorBehindBorder='#ddd'
+              backgroundColorBehindBorder={colors.lighter}
             >
               {this.props.user.data.map(user => (
                 <Text key={user.id} style={styles.userInfoName}>
@@ -76,14 +77,14 @@ class Profile extends Component {
               <View style={styles.userInfoStats}>
                 <Icon
                   name={Platform.OS === 'ios' ? 'ios-star' : 'md-star'}
-                  color='#555'
+                  color={colors.darker}
                   size={20}
                   style={styles.userInfoIcon}
                 />
                 <ShimmerPlaceHolder
                   style={{ width: 30 }}
                   visible={!loading}
-                  backgroundColorBehindBorder='#ddd'
+                  backgroundColorBehindBorder={colors.lighter}
                 >
                   <Text style={styles.userInfoText}>{stars}</Text>
                 </ShimmerPlaceHolder>
@@ -91,14 +92,14 @@ class Profile extends Component {
               <View style={styles.userInfoStats}>
                 <Icon
                   name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'}
-                  color='#555'
+                  color={colors.darker}
                   size={20}
                   style={styles.userInfoIcon}
                 />
                 <ShimmerPlaceHolder
                   style={{ width: 30 }}
                   visible={!loading}
-                  backgroundColorBehindBorder='#ddd'
+                  backgroundColorBehindBorder={colors.lighter}
                 >
                   <Text style={styles.userInfoText}>{followers}</Text>
                 </ShimmerPlaceHolder>
@@ -111,7 +112,7 @@ class Profile extends Component {
           <TouchableOpacity style={styles.menuList}>
             <Icon
               name={Platform.OS === 'ios' ? 'ios-settings' : 'md-settings'}
-              color='#555'
+              color={colors.darker}
               size={25}
               style={styles.icons}
             />
@@ -123,7 +124,7 @@ class Profile extends Component {
               name={
                 Platform.OS === 'ios' ? 'ios-star-outline' : 'md-star-outline'
               }
-              color='#555'
+              color={colors.darker}
               size={25}
               style={styles.icons}
             />
@@ -134,7 +135,7 @@ class Profile extends Component {
           <TouchableOpacity style={styles.menuList}>
             <Icon
               name={Platform.OS === 'ios' ? 'ios-person-add' : 'md-person-add'}
-              color='#555'
+              color={colors.darker}
               size={25}
               style={styles.icons}
             />
@@ -144,7 +145,7 @@ class Profile extends Component {
           <TouchableOpacity style={styles.menuList}>
             <Icon
               name={Platform.OS === 'ios' ? 'ios-card' : 'md-card'}
-              color='#555'
+              color={colors.darker}
               size={25}
               style={styles.icons}
             />
@@ -154,7 +155,7 @@ class Profile extends Component {
           <TouchableOpacity style={styles.menuList}>
             <Icon
               name={Platform.OS === 'ios' ? 'ios-bicycle' : 'md-bicycle'}
-              color='#555'
+              color={colors.darker}
               size={25}
               style={styles.icons}
             />
@@ -164,7 +165,7 @@ class Profile extends Component {
           <TouchableOpacity style={styles.menuList}>
             <Icon
               name={Platform.OS === 'ios' ? 'ios-lock' : 'md-lock'}
-              color='#555'
+              color={colors.darker}
               size={25}
               style={styles.icons}
             />
@@ -177,7 +178,7 @@ class Profile extends Component {
           >
             <Icon
               name={Platform.OS === 'ios' ? 'ios-exit' : 'md-exit'}
-              color='#555'
+              color={colors.darker}
               size={25}
               style={styles.icons}
             />

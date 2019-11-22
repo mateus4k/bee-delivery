@@ -1,8 +1,10 @@
 import { StyleSheet, Dimensions } from 'react-native'
 
+import { colors } from '../../styles'
+
 const styles = StyleSheet.create({
   backgroundImage: {
-    backgroundColor: 'rgba(255, 200, 0, 1)',
+    backgroundColor: colors.primaryOverlay,
     position: 'relative',
     flex: 1
   },
@@ -10,7 +12,7 @@ const styles = StyleSheet.create({
   backgroundOverlay: {
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(255, 200, 0, 0.90)',
+    backgroundColor: colors.primaryTransparent,
     position: 'absolute',
     top: 0,
     left: 0
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
   inputText: {
     justifyContent: 'center',
     alignItems: 'flex-start',
-    backgroundColor: 'rgba(255, 255, 255, 0.4)',
+    backgroundColor: colors.whiteTransparent,
     borderRadius: 40,
     paddingVertical: 14,
     paddingHorizontal: 50,
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
   button: {
     height: 60,
     borderRadius: 40,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: colors.darkTransparent,
     marginVertical: 6,
     justifyContent: 'center',
     alignItems: 'center'
@@ -66,14 +68,14 @@ const styles = StyleSheet.create({
 
   buttonText: {
     textTransform: 'uppercase',
-    color: '#ddd',
+    color: colors.lighter,
     fontWeight: '600'
   },
 
   version: {
     textAlign: 'center',
     marginVertical: 20,
-    color: '#fff'
+    color: colors.white
   },
 
   externalLinksContainer: {
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
   },
 
   externalLinksText: {
-    color: '#fff',
+    color: colors.white,
     textTransform: 'uppercase',
     fontWeight: '500'
   },
@@ -95,13 +97,13 @@ const styles = StyleSheet.create({
   },
 
   forgotPasswordText: {
-    color: '#fff',
+    color: colors.white,
     fontSize: 15
   },
 
   errorContainer: {
     flex: 1,
-    backgroundColor: '#0008',
+    backgroundColor: colors.darkTransparent,
     width: Dimensions.get('window').width,
     position: 'absolute',
     bottom: 0,
@@ -111,7 +113,7 @@ const styles = StyleSheet.create({
   },
 
   errorText: {
-    color: '#fff',
+    color: colors.white,
     textAlign: 'center',
     fontSize: 15
   }

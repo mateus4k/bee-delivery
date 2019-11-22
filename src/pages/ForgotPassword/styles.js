@@ -1,8 +1,10 @@
 import { Dimensions, StyleSheet } from 'react-native'
 
+import { colors } from '../../styles'
+
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: '#fd0',
+    backgroundColor: colors.primary,
     height: 200,
     alignSelf: 'stretch',
     alignItems: 'center',
@@ -20,7 +22,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#ddd'
+    backgroundColor: colors.lighter
   },
 
   form: {
@@ -28,9 +30,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingVertical: 35,
     paddingHorizontal: 20,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
     marginTop: -50,
-    shadowColor: '#000',
+    shadowColor: colors.black,
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.2,
     shadowRadius: 1.5,
@@ -48,10 +50,10 @@ const styles = StyleSheet.create({
   inputText: {
     justifyContent: 'center',
     alignItems: 'flex-start',
-    backgroundColor: 'rgba(255, 255, 255, 0.4)',
+    backgroundColor: colors.whiteTransparent,
     borderRadius: 40,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: colors.light,
     paddingVertical: 14,
     paddingHorizontal: 50,
     marginVertical: 6,
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
   button: {
     height: 60,
     borderRadius: 40,
-    backgroundColor: '#fd0',
+    backgroundColor: colors.primary,
     marginVertical: 6,
     justifyContent: 'center',
     alignItems: 'center'
@@ -91,13 +93,13 @@ const styles = StyleSheet.create({
   },
 
   registerText: {
-    color: '#777',
+    color: colors.dark,
     marginRight: 2,
     fontSize: 14
   },
 
   registerButtonText: {
-    color: '#fd0',
+    color: colors.primary,
     fontWeight: '600',
     fontSize: 14
   }

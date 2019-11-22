@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import PropTypes from 'prop-types'
 
 import styles from './styles'
+import { colors } from '../../styles'
 
 const CardReview = ({ image, title, user, description, stars }) => (
   <TouchableOpacity>
@@ -23,7 +24,7 @@ const CardReview = ({ image, title, user, description, stars }) => (
         <View style={styles.cardStarsContainer}>
           <Icon
             name={Platform.OS === 'ios' ? 'ios-star' : 'md-star'}
-            color='#555'
+            color={colors.dark}
             size={20}
             style={styles.cardStarsIcon}
           />

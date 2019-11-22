@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { colors } from '../../styles'
 
 const styles = StyleSheet.create({
   cardContainer: {
@@ -6,9 +7,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
     height: 140,
     borderRadius: 10,
-    backgroundColor: '#f4f4f4',
+    backgroundColor: colors.semiwhite,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.5)',
+    borderColor: colors.whiteTransparent,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center'
@@ -35,19 +36,19 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 20,
     fontWeight: '400',
-    color: '#333',
+    color: colors.darker,
     marginBottom: 2
   },
 
   cardUser: {
     fontSize: 14,
-    color: '#555',
+    color: colors.darker,
     marginBottom: 2
   },
 
   cardDescription: {
     fontSize: 14,
-    color: '#888',
+    color: colors.dark,
     marginBottom: 2
   },
 
@@ -62,7 +63,8 @@ const styles = StyleSheet.create({
   },
 
   cardStarsText: {
-    marginHorizontal: 1
+    marginHorizontal: 1,
+    color: colors.dark
   }
 })
 
