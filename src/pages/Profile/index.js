@@ -86,7 +86,7 @@ class Profile extends Component {
                   style={styles.userInfoIcon}
                 />
                 <ShimmerPlaceHolder
-                  style={{ width: 30 }}
+                  style={{ width: 20 }}
                   visible={!loading}
                   backgroundColorBehindBorder={colors.lighter}
                 >
@@ -101,7 +101,7 @@ class Profile extends Component {
                   style={styles.userInfoIcon}
                 />
                 <ShimmerPlaceHolder
-                  style={{ width: 30 }}
+                  style={{ width: 20 }}
                   visible={!loading}
                   backgroundColorBehindBorder={colors.lighter}
                 >

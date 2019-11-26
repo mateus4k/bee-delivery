@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontStyle: 'italic',
     color: colors.darker,
-    marginVertical: 3
+    marginVertical: 5,
+    height: 25
   },
 
   userInfoList: {
