@@ -15,6 +15,7 @@ import { bindActionCreators } from 'redux'
 import { Creators as UserAction } from '../../store/ducks/user'
 
 import MainContainer from '../../components/MainContainer'
+import ErrorToast from '../../components/ErrorToast'
 
 import styles from './styles'
 import { colors } from '../../styles'
@@ -26,13 +27,13 @@ class Profile extends Component {
     followers: 0
   }
 
-  async handleLogout() {
+  async handleLogout () {
     const { navigation } = this.props
     await AsyncStorage.clear()
     navigation.navigate('Login')
   }
 
-  componentDidMount() {
+  componentDidMount () {
     const { addUserRequest } = this.props
     addUserRequest('mateus4k')
     this.setState({ points: 181.43 })
@@ -40,14 +41,14 @@ class Profile extends Component {
     this.setState({ followers: 7 })
   }
 
-  render() {
+  render () {
     const { points, stars, followers } = this.state
     const {
-      user: { data: user, loading }
+      user: { data: user, loading, error }
     } = this.props
 
     return (
-      <MainContainer name="Perfil">
+      <MainContainer name='Perfil'>
         <View style={styles.userContainer}>
           <ShimmerPlaceHolder
             style={styles.userImage}
@@ -188,6 +189,7 @@ class Profile extends Component {
             <Text style={styles.menuText}>Sair</Text>
           </TouchableOpacity>
         </View>
+        <ErrorToast error={error} />
       </MainContainer>
     )
   }

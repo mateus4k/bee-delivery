@@ -25,6 +25,8 @@ import Logo from '../../assets/logo.png'
 import styles from './styles'
 import { colors } from '../../styles'
 
+import ErrorToast from '../../components/ErrorToast'
+
 export default class Login extends Component {
   state = {
     document: '',
@@ -196,11 +198,7 @@ export default class Login extends Component {
             </View>
           </View>
         </KeyboardAvoidingView>
-        {!!error && (
-          <View style={styles.errorContainer}>
-            <Text style={styles.errorText}>{error}</Text>
-          </View>
-        )}
+        <ErrorToast error={error} />
       </ImageBackground>
     )
   }
