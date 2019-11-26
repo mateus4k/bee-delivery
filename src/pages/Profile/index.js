@@ -23,35 +23,38 @@ class Profile extends Component {
   state = {
     points: 0,
     stars: 0,
-    followers: 0,
-    loading: true
+    followers: 0
   }
 
-  async handleLogout () {
-    await AsyncStorage.removeItem('@BeeDelivery:user')
-    this.props.navigation.navigate('Login')
+  async handleLogout() {
+    const { navigation } = this.props
+    await AsyncStorage.clear()
+    navigation.navigate('Login')
   }
 
-  componentDidMount () {
-    this.props.addUserRequest('mateus4k')
+  componentDidMount() {
+    const { addUserRequest } = this.props
+    addUserRequest('mateus4k')
     this.setState({ points: 181.43 })
     this.setState({ stars: 4.13 })
     this.setState({ followers: 7 })
-    this.setState({ loading: this.props.user.loading })
   }
 
-  render () {
-    const { points, stars, followers, loading } = this.state
+  render() {
+    const { points, stars, followers } = this.state
+    const {
+      user: { data: user, loading }
+    } = this.props
 
     return (
-      <MainContainer name='Perfil'>
+      <MainContainer name="Perfil">
         <View style={styles.userContainer}>
           <ShimmerPlaceHolder
             style={styles.userImage}
             visible={!loading}
             backgroundColorBehindBorder={colors.lighter}
           >
-            {this.props.user.data.map(user => (
+            {user.map(user => (
               <Image
                 key={user.id}
                 style={styles.userImage}
@@ -67,7 +70,7 @@ class Profile extends Component {
               visible={!loading}
               backgroundColorBehindBorder={colors.lighter}
             >
-              {this.props.user.data.map(user => (
+              {user.map(user => (
                 <Text key={user.id} style={styles.userInfoName}>
                   {user.name}
                 </Text>
